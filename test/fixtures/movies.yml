@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  runtime: 2016-03-20 20:36:59
+  auditorium_id: 1
+  placed?: false
+
+two:
+  title: MyString
+  runtime: 2016-03-20 20:36:59
+  auditorium_id: 1
+  placed?: false
