@@ -1,8 +1,9 @@
 class CreateOrders < ActiveRecord::Migration
   def change
     create_table :orders do |t|
-      t.integer :ticket_id
-      t.integer :user_id
+      t.float   :number_tickets_sold
+      t.float   :total_price
+      t.integer :customer_id
 
       t.timestamps null: false
     end

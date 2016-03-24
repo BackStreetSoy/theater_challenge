@@ -1,0 +1,10 @@
+<p> Purchase <%=@num_of_tickets%> tickets for $<%=@total_price%> </p>
+
+
+<%= form_for :customer, url: '/orders' do |f|%>
+
+Your Email: <%= f.text_field :email %><br>
+Credit Card Number: <%= f.password_field :credit_card_number%><br>
+Expiration Date: <%= f.date_field :card_expiration%> <br>
+<%= f.submit "Submit" , class: "btn btn-primary" %>
+<%end%>

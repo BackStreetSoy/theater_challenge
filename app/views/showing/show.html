@@ -1,0 +1,13 @@
+<p>select number of tickets you'd like to purchase</p>
+
+<select class="number_of_tickets">
+    <% num_of_tickets = 0 %>
+    <% 11.times do %>
+        <option value="<%=num_of_tickets%>" onChange="ticketTotal(this)"><%=num_of_tickets%></option>
+        <% num_of_tickets += 1 %>
+    <%end%>
+</select>
+
+<p class="price"> <b>price:</b> 0 </p><br>
+
+<a href= "/orders/new/:ticket_count" class="purchase_link"><button>buy tickets</button></a>

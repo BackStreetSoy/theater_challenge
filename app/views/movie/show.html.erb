@@ -1,0 +1,14 @@
+<h1 class="movie_title"><%=@movie.title%></h1>
+<img src="<%=@movie.image%>"></img>
+<h4>Summary: </h4>
+<p><%=@movie.synopsis%>
+
+<h4>Showtimes: </h4>
+<ul style="list-style: none;">
+    <%@showings.each do |showing| %>
+        <li> <a href="/showings/<%=showing.id%>"><%= showing.time_string %></a></li>
+    <%end%>
+
+</ul>
+
+
