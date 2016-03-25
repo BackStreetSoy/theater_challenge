@@ -6,8 +6,7 @@ class CreateCustomers < ActiveRecord::Migration
       t.string :credit_card_type
       t.integer :credit_card_number
       t.datetime :card_expiration
-      # t.datetime :card_expiration_month
-      # t.datetime :card_expiration_year
+
 
       t.timestamps null: false
     end

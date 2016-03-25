@@ -14,11 +14,11 @@
 ActiveRecord::Schema.define(version: 20160321014330) do
 
   create_table "auditoria", force: :cascade do |t|
-    t.integer  "number"
     t.integer  "seat_count"
+    t.string   "movie_title"
     t.integer  "theater_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "customers", force: :cascade do |t|

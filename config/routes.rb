@@ -6,12 +6,13 @@ Rails.application.routes.draw do
   root 'movie#index'
   get '/admin' => 'manager#index'
   get '/admin/:admin_selection' => 'manager#show'
-  get '/admin/auditorium/:auditorium_id' => 'auditorium#show'
 
   get '/movies/:id' => 'movie#show'
   get '/showings/:id' => 'showing#show'
   get '/orders/new/:showing_id/:ticket_count' => 'order#new'
   post '/orders' => 'order#create'
+
+  resources :auditoria
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

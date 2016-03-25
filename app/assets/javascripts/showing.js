@@ -11,7 +11,7 @@ $(document).ready(function(){
         $(".price").html("<b>price: </b> $" + price + "0")
 
          $(".purchase_link").attr("href", "/orders/new/"+ showing_id + "/" + value)
-         $(".purchase_link").html("<button>buy tickets</button>")
+         $(".purchase_link").html("<button type='button' class='btn btn-primary'>buy tickets</button>")
     })
 
 

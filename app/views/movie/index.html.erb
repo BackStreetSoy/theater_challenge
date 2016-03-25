@@ -1,10 +1,11 @@
-<h1 class= "welcome_banner">Welcome to Ultimate Cinemas!</h1>
 
-<ul style="list-style: none;" class="movie_list">
-    <% @movies.each do |movie| %>
 
-    <li><a href="/movies/<%=movie.id%>"><%=movie.title%><br><img class="movie_poster" src="<%=movie.image%>"></img></a></li>
-    
-    <%end%>
-
-</ul>
+<div class="MovieList">
+    <ul class="list-inline" style="list-style: none;">
+            <% @movies.each do |movie| %>
+        <li class="MovieItem"><br>
+            <a href="/movies/<%=movie.id%>"><%=movie.title%><br><img class="movie_poster" src="<%=movie.image%>"></img></a>
+        </li>
+        <%end%>
+    </ul>
+</div>

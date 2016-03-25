@@ -3,7 +3,7 @@ class ManagerController < ApplicationController
     end 
 
     def show
-        if params[:admin_selection] == "auditoriums"
+        if params[:admin_selection] == "auditoriums" 
             @auditoriums = Auditorium.all
         elsif params[:admin_selection] == "movies"
             @movies = Movie.all 
