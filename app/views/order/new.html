@@ -1,10 +1,18 @@
 <p> Purchase <%=@num_of_tickets%> tickets for $<%=@total_price%> </p>
 
+<%if @valid_check != "true" %>
+    <p><%=@valid_check%></p>
+<%end%>
 
-<%= form_for :customer, url: '/orders' do |f|%>
+<p><%=@expired%></p>
 
+<%= form_for :order, url: '/orders' do |f|%>
 Your Email: <%= f.text_field :email %><br>
 Credit Card Number: <%= f.password_field :credit_card_number%><br>
 Expiration Date: <%= f.date_field :card_expiration%> <br>
+Credit Card Type: <%= f.select :credit_card_type, options_for_select([["Mastercard", "Mastercard"], ["Visa", "Visa"], ["Discover", "Discover"], ["Amex", "Amex"]]) %><br>
+<%= f.hidden_field :total, :value => @total_price%>
+<%= f.hidden_field :ticket_count, :value => @num_of_tickets %>
+<%= f.hidden_field :showing_id, :value => @showing_id %>
 <%= f.submit "Submit" , class: "btn btn-primary" %>
 <%end%>

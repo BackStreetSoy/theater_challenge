@@ -6,7 +6,10 @@
 <h4>Showtimes: </h4>
 <ul style="list-style: none;">
     <%@showings.each do |showing| %>
-        <li> <a href="/showings/<%=showing.id%>"><%= showing.time_string %></a></li>
+
+        <%if showing.sold_out? == false %>
+            <li> <a href="/showings/<%=showing.id%>"><%= showing.time_string %></a></li>
+        <%end%>
     <%end%>
 
 </ul>

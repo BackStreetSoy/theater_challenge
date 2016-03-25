@@ -3,6 +3,7 @@ class CreateCustomers < ActiveRecord::Migration
     create_table :customers do |t|
       t.string :name
       t.string :email
+      t.string :credit_card_type
       t.integer :credit_card_number
       t.datetime :card_expiration
       # t.datetime :card_expiration_month

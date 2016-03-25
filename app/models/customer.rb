@@ -7,7 +7,7 @@ class Customer < ActiveRecord::Base
 
 
     def self.valid_visa?(card_number)
-        if /\A4[0-9]{12}(?:[0-9]{3})?\z/ === card_number.to_s
+        if /\A4[0-9]{12}(?:[0-9]{3})?\z/ === card_number
             return true 
         else 
             return "please enter valid card number"
@@ -15,7 +15,7 @@ class Customer < ActiveRecord::Base
     end 
 
     def self.valid_mastercard?(card_number)
-        if /\A5[1-5][0-9]{14}\z/ === card_number.to_s
+        if /\A5[1-5][0-9]{14}\z/ === card_number
             return true 
         else 
             return "please enter valid card number"
@@ -23,7 +23,7 @@ class Customer < ActiveRecord::Base
     end 
 
     def self.valid_amex?(card_number)
-        if /\A3[47][0-9]{13}\z/ === card_number.to_S
+        if /\A3[47][0-9]{13}\z/ === card_number
             return true 
         else 
             return "please enter valid card number"
@@ -40,8 +40,9 @@ class Customer < ActiveRecord::Base
 
 
     def self.card_expired?(card_exp_day, card_exp_month, card_exp_year)
-        return true if card_exp_day <= Time.now.day && card_exp_month <= Time.now.month && card_exp_year <= Time.now.year
+       return "please use a card that has not yet expired" if card_exp_day <= Time.now.day && card_exp_month <= Time.now.month && card_exp_year <= Time.now.year
+            
+       false 
 
-        false
     end
 end

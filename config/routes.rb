@@ -4,9 +4,13 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'movie#index'
+  get '/admin' => 'manager#index'
+  get '/admin/:admin_selection' => 'manager#show'
+  get '/admin/auditorium/:auditorium_id' => 'auditorium#show'
+
   get '/movies/:id' => 'movie#show'
   get '/showings/:id' => 'showing#show'
-  get '/orders/new/:ticket_count' => 'order#new'
+  get '/orders/new/:showing_id/:ticket_count' => 'order#new'
   post '/orders' => 'order#create'
 
   # Example of regular route:

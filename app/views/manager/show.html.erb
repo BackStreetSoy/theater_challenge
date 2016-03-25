@@ -1,0 +1,18 @@
+<h1>Manage Your Theater!</h1>
+
+<ul style= "list-style: none;" >
+    <%if @auditoriums %>
+        <% @auditoriums.each do |auditorium| %>
+            <li class= "auditorium"><a href="/admin/auditorium/<%=auditorium.number%>">Auditorium <%=auditorium.number %></a></li>
+        <%end%>
+
+    <%elsif @orders %>
+        <% @orders.each do |order| %>
+            <li class "order">
+                <a href=""> Movie Ordered: <%=order.movie.title%></a><br>
+                <a href=""> Tickets Sold : <%=order.number_tickets_bought%></a><br>
+                <a href=""> Total: <%=order.total_price %></a><br>
+                </li><br>
+        <%end%>
+    <%end%>
+</ul>

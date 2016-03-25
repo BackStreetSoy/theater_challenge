@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 20160321014330) do
   create_table "customers", force: :cascade do |t|
     t.string   "name"
     t.string   "email"
+    t.string   "credit_card_type"
     t.integer  "credit_card_number"
     t.datetime "card_expiration"
     t.datetime "created_at",         null: false
@@ -49,10 +50,11 @@ ActiveRecord::Schema.define(version: 20160321014330) do
   end
 
   create_table "orders", force: :cascade do |t|
-    t.integer  "ticket_id"
-    t.integer  "customer_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.float    "number_tickets_bought"
+    t.float    "total_price"
+    t.integer  "movie_id"
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
   end
 
   create_table "showings", force: :cascade do |t|

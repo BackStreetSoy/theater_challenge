@@ -74,20 +74,17 @@ end
 
 Movie.all.each do |movie|
     showtimes = [10.45]
-
-
 #movie runtimes have to be at least 80 minutes and can't be longer than 3 hours
 
     if movie.runtime >= 1.33 && movie.runtime <= 1.5
         showtimes << 12.30 << 14.00 << 15.30 << 17.00 << 18.30 << 20.00 << 21.30 << 23.00
 
     elsif movie.runtime >= 1.5 && movie.runtime <= 2 
-        showtimes << 13.00 << 15.00 << 17.00 << 19.00 << 21.00 << 23.00
+        showtimes << 13.00 << 15.00 << 17.00 << 19.00 << 21.00 << 23.00 << 24.00
 
     elsif movie.runtime >= 2 && movie.runtime <= 3
-        showtimes << 14.15 << 17.15 << 21.15 
+        showtimes << 14.15 << 17.15 << 21.15 << 24.00
     end 
-
 
     showtimes.map! do |time|
         time = Showing.new(military_time: time.to_f, time_string: showtimes_as_strings_and_integers[time], movie: movie)
@@ -100,7 +97,6 @@ Showing.all.each do |showing|
     showing.movie.auditorium.seat_count.times do 
         showing.tickets << Ticket.new(price: 7.30, showing: showing)
     end 
-
 end 
 
 theater = Theater.create!(name: "Ultimate Theater")
