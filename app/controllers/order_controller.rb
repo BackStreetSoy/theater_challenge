@@ -49,6 +49,7 @@ class OrderController < ApplicationController
 
             ReceiptMailer.guest_receipt(email, number_of_tickets, total).deliver_now!
 
+            flash[:success] = "Thanks for your purchase!"
             redirect_to '/'
         else 
 

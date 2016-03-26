@@ -2,11 +2,13 @@
 
 
     <%if @auditoriums %>
-    <ul style= "list-style: none;" >
-        <% @auditoriums.each do |auditorium| %>
-            <li class= "auditorium"><a href="/auditoria/<%=auditorium.id%>">Auditorium <%=auditorium.id %></a></li>
-        <%end%>
-    </ul>
+    <div class="MovieList">
+        <ul class="list-inline" style="list-style: none;">
+            <% @auditoriums.each do |auditorium| %>
+                <li class= "auditorium"><a href="/auditoria/<%=auditorium.id%>">Auditorium <%=auditorium.id %></a></li>
+            <%end%>
+        </ul>
+    </div>
 
         <a href="/auditoria/new"><button>add an auditorium</button></a>
 
@@ -21,3 +23,13 @@
             <%end%>
         </ul>
     <%end%>
+
+
+
+<div>
+  <h3>Inline List</h3>
+  <ul class="list-inline">
+    <li><a href="#">all orders</a></li>
+    <li><a href="#">orders by movie</a></li>
+  </ul>
+</div> 

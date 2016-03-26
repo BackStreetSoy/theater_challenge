@@ -35,7 +35,7 @@ class Movie < ActiveRecord::Base
 
 
             showtimes.map! do |time|
-                time = Showing.new(military_time: time.to_f, time_string: available_times[time], movie: self)
+                time = Showing.create!(military_time: time.to_f, time_string: available_times[time], movie: self)
             end
 
             self.showings = showtimes

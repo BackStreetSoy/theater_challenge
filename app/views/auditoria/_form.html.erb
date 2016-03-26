@@ -2,7 +2,7 @@
    <div class="col-md-6 col-md-offset-3">
 <%= form_for @auditorium do |f|%>
 Seat Count: <%=f.text_field :seat_count %><br>
-Movie Playing: <%= f.text_field :movie_title, class: 'form-control' %>
+Movie Playing: <%= f.text_field :movie_title%>
 <br>
 <%= f.submit "Submit" , class: "btn btn-primary" %>
 <%end%>
