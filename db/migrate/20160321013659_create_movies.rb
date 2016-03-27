@@ -5,8 +5,8 @@ class CreateMovies < ActiveRecord::Migration
       t.string :synopsis
       t.float :runtime
       t.string :image
-      t.boolean :placed?, default: false
-      t.integer :auditorium_id
+      t.string :status
+      t.integer :auditorium_id, :null => true
 
       t.timestamps null: false
     end

@@ -1,0 +1,11 @@
+<br><br>
+
+    <%= form_for @movie do |f|%>
+        Title: <%=f.text_field :title %><br>
+        Synopsis: <%= f.text_field :synopsis%><br>
+        Runtime: <%= f.text_field :runtime %><br>
+        Auditorium: <%=f.text_field :auditorium_id %><br>
+        <br>
+    <%= f.submit "Submit" , class: "btn btn-primary" %>
+    <%end%>
+

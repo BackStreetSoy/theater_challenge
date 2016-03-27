@@ -1,0 +1,28 @@
+ <% if flash[:notice] %>
+    <div class="notice"><%= flash[:notice] %></div>
+  <% end %><br>
+
+<%= render "form" %>
+
+<h4> Empty Auditoriums </h4>
+    <ul>
+        <% @auditoriums.each do |auditorium| %>
+            <%if auditorium.movie == nil %>
+                <li> Auditorium <%=auditorium.id%> </li>
+            <%end%>
+        <%end%>
+
+    </ul>
+
+<h4> Occupied Auditoriums </h4>
+
+ <ul style = "list-style: none;">
+        <% @auditoriums.each do |auditorium| %>
+            <%if auditorium.movie != nil? %>
+                <li> Auditorium <%=auditorium.id%> </li>
+            <%end%>
+        <%end%>
+
+</ul>
+
+

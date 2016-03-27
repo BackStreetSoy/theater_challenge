@@ -14,13 +14,6 @@ require 'faker'
 end 
 
 
-
-Auditorium.all.each do |auditorium|
-    movie = Movie.find_by(auditorium: auditorium)
-    auditorium.update_attributes(movie_title: movie.title)
-end 
-
-
 theater = Theater.create!(name: "Ultimate Theater")
 theater.auditoriums = Auditorium.all
 

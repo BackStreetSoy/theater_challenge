@@ -1,0 +1,9 @@
+ <ul>
+     <% @orders.each do |order| %>
+            <li class "order">
+                <a href=""> Movie Ordered: <%=order.movie.title%></a><br>
+                <a href=""> Tickets Sold : <%=order.number_tickets_bought%></a><br>
+                <a href=""> Total: <%=order.total_price %></a><br>
+            </li><br>
+     <%end%> 
+ </ul>

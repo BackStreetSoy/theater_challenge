@@ -15,10 +15,9 @@ ActiveRecord::Schema.define(version: 20160321014330) do
 
   create_table "auditoria", force: :cascade do |t|
     t.integer  "seat_count"
-    t.string   "movie_title"
     t.integer  "theater_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "customers", force: :cascade do |t|
@@ -43,10 +42,10 @@ ActiveRecord::Schema.define(version: 20160321014330) do
     t.string   "synopsis"
     t.float    "runtime"
     t.string   "image"
-    t.boolean  "placed?",       default: false
+    t.string   "status"
     t.integer  "auditorium_id"
-    t.datetime "created_at",                    null: false
-    t.datetime "updated_at",                    null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
   create_table "orders", force: :cascade do |t|

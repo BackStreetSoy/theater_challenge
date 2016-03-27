@@ -10,7 +10,7 @@ class  AuditoriaController < ApplicationController
 
     def create
         @movie = Movie.find_by(title: auditorium_params[:movie_title])
-        @auditorium = Auditorium.create!(seat_count: auditorium_params[:seat_count], movie_title: auditorium_params[:movie_title], movie: @movie)
+        @auditorium = Auditorium.create!(seat_count: auditorium_params[:seat_count])
         redirect_to @auditorium
     end 
 
@@ -20,12 +20,11 @@ class  AuditoriaController < ApplicationController
 
     def update
 
-        @movie = Movie.find_by(title: auditorium_params[:movie_title])
         @auditorium = Auditorium.find(params[:id])
 
-        if @movie.is_a?(Movie) && @auditorium.is_a?(Auditorium) && auditorium_params[:seat_count].to_i > 0
+        if @auditorium.is_a?(Auditorium) && auditorium_params[:seat_count].to_i > 0
 
-            @auditorium.update_attributes(seat_count: auditorium_params[:seat_count], movie_title: @movie.title, movie: @movie)
+            @auditorium.update_attributes(seat_count: auditorium_params[:seat_count])
 
             @auditorium.showings.each do |showing|
                 showing.tickets.destroy_all
@@ -39,7 +38,7 @@ class  AuditoriaController < ApplicationController
             redirect_to @auditorium
         else 
 
-            flash[:notice] = "Woops. Something went wrong. Hint: movie can't already be placed in another theater, its title must be spelled correctly, and seat numbers have to be positive"
+            flash[:notice] = "Woops. Something went wrong.x"
 
             render 'edit'
         end 
@@ -49,6 +48,6 @@ class  AuditoriaController < ApplicationController
     end 
 
     def auditorium_params
-        params.require(:auditorium).permit(:seat_count, :movie_title, :movie_id)
+        params.require(:auditorium).permit(:seat_count, :movie_id)
     end
 end

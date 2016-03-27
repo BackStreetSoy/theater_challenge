@@ -1,8 +1,14 @@
+
+<br><br>
+
 <p>Auditorium <%=@auditorium.id%> </p>
 
 <p>Number of Seats: <%=@auditorium.seat_count %> </p>
+    <%if @auditorium.movie != nil %>
+        <p>Movie Playing: <%= @auditorium.movie.title %> </p>
+    <%else%>
+        <p>Movie Playing: Currently Showing No movies </p>
+    <%end%>
 
-<p>Movie Playing: <%=@auditorium.movie.title %> </p>
-
-<a href="/auditoria/<%=@auditorium.id%>/edit"><button>edit details</button></a>
-<a href="/admin/auditoriums"><button>back to auditoriums</button></a>
+<a href="/auditoria/<%=@auditorium.id%>/edit"><button class="btn btn-primary">edit details</button></a>
+<a href="/admin/auditoriums"><button class= "btn btn-primary">back to auditoriums</button></a>

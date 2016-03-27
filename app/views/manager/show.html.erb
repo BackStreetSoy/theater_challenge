@@ -2,34 +2,134 @@
 
 
     <%if @auditoriums %>
-    <div class="MovieList">
-        <ul class="list-inline" style="list-style: none;">
-            <% @auditoriums.each do |auditorium| %>
-                <li class= "auditorium"><a href="/auditoria/<%=auditorium.id%>">Auditorium <%=auditorium.id %></a></li>
-            <%end%>
-        </ul>
-    </div>
+        <div class="MovieList">
+            <ul class="list-inline" style="list-style: none;">
+                <% @auditoriums.each do |auditorium| %>
+                    <% if auditorium.movie != nil %>
+                        <li class= "auditorium"><a href="/auditoria/<%=auditorium.id%>">
+                            Auditorium: <%=auditorium.id %><br>
+                            Showing: <%=auditorium.movie.title%></a></li>
 
-        <a href="/auditoria/new"><button>add an auditorium</button></a>
+                    <% else %>
+                        <li>Auditorium: <%=auditorium.id %><br>
+                            Not Currently Showing any Films
+                        </li>
+
+                    <%end%>
+
+                    <%end%>
+            </ul>
+        </div>
+
+        <a href="/auditoria/new"><button class="btn btn-primary">add an auditorium</button></a>
+           <a href="/admin"><button class="btn btn-primary">back to main admin page</button></a>
 
     <%elsif @orders %>
-       <ul style= "list-style: none;" >
-            <% @orders.each do |order| %>
+
+            <div class="container">
+  <ul class="nav nav-tabs" style="list-style: none;">
+    <li><a data-toggle="tab" href="#menu1">All Orders</a></li>
+    <li><a data-toggle="tab" href="#menu2">Orders By Movie</a></li>
+  </ul>
+
+  <div class="tab-content">
+    <div id="menu1" class="tab-pane fade">
+      <h3>All Orders</h3>
+
+       <ul style="list-style: none;">
+         <% @orders.each do |order| %>
                 <li class "order">
-                    <a href=""> Movie Ordered: <%=order.movie.title%></a><br>
-                    <a href=""> Tickets Sold : <%=order.number_tickets_bought%></a><br>
+                     <a href=""> Movie Ordered: <%=order.movie.title%></a><br>
+                     <a href=""> Tickets Sold : <%=order.number_tickets_bought%></a><br>
                     <a href=""> Total: <%=order.total_price %></a><br>
-                    </li><br>
-            <%end%>
-        </ul>
+                </li><br>
+        <%end%> 
+    </ul>
+    </div>
+
+    <div id="menu2" class="tab-pane fade">
+      <h3>Orders by Movie</h3>
+
+
+    <ul style="list-style: none;">
+         <% @order_movies.each do |movie| %>
+                <li class "order">
+                     <a href=""> Title: <%=movie.title%></a><br>
+                     <a href=""> Number of Orders: <%=movie.orders.count%></a><br>
+                    <a href=""> Total Earned: <%= movie.total_earned %></a><br>
+                </li><br>
+        <%end%> 
+    </ul>
+
+     <a href="/admin"><button class="btn btn-primary">back to main admin page</button></a>
+
+      
+    </div>
+  </div>
+</div>
+
+    <%elsif @movies %>
+        
+        <div class="container">
+              <ul class="nav nav-tabs" style="list-style: none;">
+                    <li><a data-toggle="tab" href="#menu1">Movies Playing</a></li>
+                    <li><a data-toggle="tab" href="#menu2">All Movies</a></li>
+              </ul>
+
+          <div class="tab-content">
+
+            <div id="menu1" class="tab-pane fade">
+              <h3>Movies Playing</h3>
+
+               <ul style="list-style: none;">
+                 <% @movies.each do |movie| %>
+                 <%if movie.status == "playing"%>
+                        <li class "order">
+                             <a href=""> Movie: <%=movie.title%></a><br>
+                             <a href=""> Auditorium: <%=movie.auditorium_id%></a><br>
+                             <a href="/movies/<%=movie.id%>/edit"><button class ="btn btn-primary">edit movie</button></a>
+                        </li><br>
+                <%end%>
+                <%end%> 
+            </ul>
+                 <a href="/admin"><button class="btn btn-primary">back to main admin page</button></a>
+            </div>
+
+
+    <div id="menu2" class="tab-pane fade">
+      <h3>All Movies</h3>
+
+
+    <ul style="list-style: none;">
+         <% @movies.each do |movie| %>
+                <li class "order">
+                     <a href=""> Title: <%=movie.title%></a><br>
+                     <a href=""> Runtime: <%=movie.runtime%></a><br>
+                     <%if movie.status != "playing"%>
+                            <a href="/movies/<%=movie.id%>/auditorium/new"><button class ="btn btn-primary">place in auditorium</button></a>
+                     <%end%>
+                </li><br>
+        <%end%> 
+
+    </ul>
+        <a href="/movies/new"><button class ="btn btn-primary">add movie</button></a><br>
+
+     <br><a href="/admin"><button class="btn btn-primary">back to main admin page</button></a>
+      
+    </div>
+
+  </div>
+
+</div>
+    
+
+
+
     <%end%>
 
 
 
-<div>
-  <h3>Inline List</h3>
-  <ul class="list-inline">
-    <li><a href="#">all orders</a></li>
-    <li><a href="#">orders by movie</a></li>
-  </ul>
-</div> 
+
+
+
+

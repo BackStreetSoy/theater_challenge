@@ -9,6 +9,7 @@ class ManagerController < ApplicationController
             @movies = Movie.all 
         elsif params[:admin_selection] == "orders"
             @orders = Order.all
+            @order_movies = Movie.all
         end 
 
     end 

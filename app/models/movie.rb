@@ -1,12 +1,54 @@
 class Movie < ActiveRecord::Base
-    belongs_to :auditorium
+    belongs_to :auditorium,  inverse_of: :movie
     has_many :showings
     has_many :tickets, through: :showings
     has_many :orders
     has_many :audience_members, through: :orders, source: :customer
+    validates_presence_of :runtime, :synopsis, :title
+    # validates_uniqueness_of :auditorium_id
+    validates :runtime, :inclusion => {:in => 1..3}
     after_create :load_showtimes, :load_tickets
 
 
+    def total_earned
+        totals = []
+
+        self.orders.each do |order|
+                totals << order.total_price
+        end 
+
+        return totals.inject{ |sum, n| sum + n } 
+    end
+
+    def set_movie(auditorium)
+            @movie = Movie.find(self.id)
+
+        if auditorium.movie != nil
+            auditorium.remove_movie
+            auditorium.update_attributes!(movie: self)
+            self.auditorium = auditorium
+        else 
+            auditorium.movie = self
+
+            self.update_attributes!(auditorium: auditorium)
+        end 
+
+        self.load_tickets
+        self.save
+    end 
+
+    def load_tickets
+        if self.auditorium != nil 
+            self.showings.each do |showing|
+                self.auditorium.seat_count.times do 
+                        showing.tickets << Ticket.create!(price: 7.30, showing: showing)
+                 end 
+            end 
+
+             self.status = "playing" 
+             self.save!
+        end 
+    end
 
 
     private
@@ -41,15 +83,8 @@ class Movie < ActiveRecord::Base
             self.showings = showtimes
         end
 
-        def load_tickets
-            self.showings.each do |showing|
-                self.auditorium.seat_count.times do 
-                    showing.tickets << Ticket.create!(price: 7.30, showing: showing)
-                end 
-            end  
-        end
-
+     
 
    
-    
+
 end
