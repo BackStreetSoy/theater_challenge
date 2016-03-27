@@ -2,6 +2,8 @@
 
 == LaunchPad Theater Challenge 
 
+TO ACCESS ADMIN FUNCTIONALITY USE THE '/admin' url!! 
+
 For this challenge I was given the task to create a theater management tool, that does the following: 
 
 for users -- 
