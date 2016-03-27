@@ -13,7 +13,6 @@ require 'faker'
     Movie.create!(title: Faker::Lorem.words(2).join(" "), synopsis: Faker::Lorem.sentence, image: Faker::Avatar.image,  runtime: (rand(80.0..180.0) / 60.0).round(2), auditorium: Auditorium.create!(seat_count: 50, movie: Movie.find_by(auditorium: self)))
 end 
 
-
 theater = Theater.create!(name: "Ultimate Theater")
 theater.auditoriums = Auditorium.all
 
