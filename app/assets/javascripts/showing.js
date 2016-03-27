@@ -14,5 +14,4 @@ $(document).ready(function(){
          $(".purchase_link").html("<button type='button' class='btn btn-primary'>buy tickets</button>")
     })
 
-
 });
