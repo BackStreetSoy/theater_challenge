@@ -33,13 +33,6 @@ ActiveRecord::Schema.define(version: 20160321014330) do
     t.datetime "updated_at",         null: false
   end
 
-  create_table "games", force: :cascade do |t|
-    t.string   "title"
-    t.string   "image"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "managers", force: :cascade do |t|
     t.string   "username"
     t.string   "password_digest"
@@ -84,14 +77,6 @@ ActiveRecord::Schema.define(version: 20160321014330) do
   create_table "tickets", force: :cascade do |t|
     t.float    "price"
     t.integer  "showing_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "writings", force: :cascade do |t|
-    t.string   "title"
-    t.string   "content"
-    t.string   "image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

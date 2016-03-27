@@ -37,6 +37,8 @@ class MoviesController < ApplicationController
             end 
         end 
 
+        @showings
+
     end 
 
     def edit 
