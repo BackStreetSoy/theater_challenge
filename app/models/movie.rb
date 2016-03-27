@@ -5,7 +5,6 @@ class Movie < ActiveRecord::Base
     has_many :orders
     has_many :audience_members, through: :orders, source: :customer
     validates_presence_of :runtime, :synopsis, :title
-    # validates_uniqueness_of :auditorium_id
     validates :runtime, :inclusion => {:in => 1..3}
     after_create :load_showtimes, :load_tickets
 
