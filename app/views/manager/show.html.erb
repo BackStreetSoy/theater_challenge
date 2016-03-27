@@ -89,6 +89,7 @@
                              <a href=""> Auditorium: <%=movie.auditorium_id%></a><br>
                              <a href="/movies/<%=movie.id%>/edit"><button class ="btn btn-primary">edit movie</button></a>
                         </li><br>
+
                 <%end%>
                 <%end%> 
             </ul>
@@ -108,6 +109,7 @@
                      <%if movie.status != "playing"%>
                             <a href="/movies/<%=movie.id%>/auditorium/new"><button class ="btn btn-primary">place in auditorium</button></a>
                      <%end%>
+
                 </li><br>
         <%end%> 
 

@@ -10,5 +10,7 @@
         <p>Movie Playing: Currently Showing No movies </p>
     <%end%>
 
-<a href="/auditoria/<%=@auditorium.id%>/edit"><button class="btn btn-primary">edit details</button></a>
-<a href="/admin/auditoriums"><button class= "btn btn-primary">back to auditoriums</button></a>
+<a href="/auditoria/<%=@auditorium.id%>/edit"><button class="btn btn-primary">edit details</button></a><br><br>
+<a href="/admin/auditoriums"><button class= "btn btn-primary">back to auditoriums</button></a><br><br>
+
+<%= link_to 'Destroy',  { action: :destroy, id: @auditorium.id }, method: :delete, data: { confirm: 'Are you sure?' } %>

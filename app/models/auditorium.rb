@@ -2,7 +2,8 @@ class Auditorium < ActiveRecord::Base
     belongs_to :theater
     has_one :movie,  inverse_of: :auditorium
     has_many :showings, through: :movie
-    
+    before_destroy :remove_movie
+
 
    
     def remove_movie

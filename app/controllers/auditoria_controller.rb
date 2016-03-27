@@ -45,6 +45,10 @@ class  AuditoriaController < ApplicationController
     end 
 
     def destroy
+        @auditorium = Auditorium.find(params[:id])
+        @auditorium.destroy!
+
+        redirect_to '/admin/auditoriums'
     end 
 
     def auditorium_params

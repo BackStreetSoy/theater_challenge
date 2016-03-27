@@ -2,27 +2,31 @@
     <div class="notice"><%= flash[:notice] %></div>
   <% end %><br>
 
-<%= render "form" %>
+<%= render "form" %><br><br>
+
+<p>choose from these auditoriums: </p>
 
 <h4> Empty Auditoriums </h4>
-    <ul>
+    <ul class="list-inline" style="list-style: none;">
         <% @auditoriums.each do |auditorium| %>
             <%if auditorium.movie == nil %>
                 <li> Auditorium <%=auditorium.id%> </li>
             <%end%>
         <%end%>
 
-    </ul>
 
+    </ul>
 <h4> Occupied Auditoriums </h4>
 
- <ul style = "list-style: none;">
+ <ul class="list-inline" style="list-style: none;">
         <% @auditoriums.each do |auditorium| %>
             <%if auditorium.movie != nil? %>
                 <li> Auditorium <%=auditorium.id%> </li>
             <%end%>
         <%end%>
-
 </ul>
+
+
+ <%= link_to 'Remove From Database',  { action: :destroy, id: @movie.id }, method: :delete, data: { confirm: 'Are you sure?' } %>
 
 

@@ -64,8 +64,13 @@ class MoviesController < ApplicationController
         redirect_to '/admin/movies'
     end 
 
-    def delete
+    def destroy
         @movie = Movie.find(params[:id])
+
+        if @movie.auditorium != nil 
+            @movie.auditorium.remove_movie 
+        end 
+
         @movie.destroy! 
 
         redirect_to '/admin/movies'
