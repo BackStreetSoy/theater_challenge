@@ -46,22 +46,22 @@ class MoviesController < ApplicationController
 
     def update
         @movie = Movie.find(params[:id])
-        @auditorium = Auditorium.find(movie_params[:auditorium_id])
-        puts movie_params
+      
 
-        if @auditorium.movie != nil
+        if movie_params[:auditorium_id] != ""
+            @auditorium = Auditorium.find(movie_params[:auditorium_id])
             @movie.set_movie(@auditorium)
             @movie.update_attributes(synopsis: movie_params[:synopsis], runtime: movie_params[:runtime], status: "playing")
+
+            redirect_to '/admin/movies'
 
         else 
 
-            @movie.set_movie(@auditorium)
-            @movie.update_attributes(synopsis: movie_params[:synopsis], runtime: movie_params[:runtime], status: "playing")
+           flash[:notice] = "please enter an auditorium number"
+           redirect_to "/movies/#{@movie.id}/edit"
         end 
 
        
-
-        redirect_to '/admin/movies'
     end 
 
     def destroy
