@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    console.log("hello")
+
 
     $(".number_of_tickets").change(function(sel){
         value = parseInt(sel.target.value)
