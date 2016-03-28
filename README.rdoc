@@ -1,28 +1,32 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+== LaunchPad Theater Challenge 
 
-Things you may want to cover:
+TO ACCESS ADMIN FUNCTIONALITY USE THE '/admin' url!! 
 
-* Ruby version
+For this challenge I was given the task to create a theater management tool, that does the following: 
 
-* System dependencies
+for users -- 
+* allow users to view available movies (only if the movie isn't showing yet)
+* allow users to purchase multiple tickets for any given movie
+* sends email receipts to users who purchased movie tickets 
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+for managers --
+* managers are given a 'secret' url ('/admin') which grants them access to the theater management system
+* managers can add an auditorium to the theater, as well as control how many seats that auditorium has 
+* managers can add available movies to thier listings 
+* managers may also remove movies and auditoriums if they so please
+* all orders are visible to managers as well as total amount earned for a movie per day 
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+Problem areas. 
+
+Given more time I would have considered a better 'time' implementation. As is, showtimes are automatically loaded when you place a movie into a theater. The showtimes are based off the length of the movie (which can't be longer than 3 hours). Giving the manager more control over movie timings perhaps by uncoupling the 'Showing' model from the movie and auditorium models a little more, I could have then produced a scenario where the manager could choose from available times. I also lack any kind of background task that 'reloads tickets' after 24 hours is up. 
+
+I realized a little too late that the app doesn't account for 'days of the week'. This goes with the implementation of time. Creating a calendar interface for the manager would have been preferable.
+
+Auditoriums. Right now I have it so that each auditorium can only play one movie at a time, and when you place a movie into a given auditorium it checks to see if a movie is in there, and then replaces it. It's not pretty. I was looking at has_one relationships and was trying to fiddle around a little more with cleanly being able to switch out movies, but found myself falling into a rabbit hole. Future iterations of this app, would look for cleaner auditorium solutions, as well better route organization. 
+
+
+Thanks! 
+
