@@ -53,7 +53,7 @@ class OrderController < ApplicationController
             redirect_to '/'
         else 
 
-            redirect_to controller: 'order', action: 'new', movie_id: @movie.id,  ticket_count: order_params[:ticket_count], valid: @valid_check, expired: @expired
+            redirect_to controller: 'order', action: 'new', showing_id: @showing.id,  ticket_count: order_params[:ticket_count], valid: @valid_check, expired: @expired
         end 
     end 
 
