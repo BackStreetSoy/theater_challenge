@@ -8,8 +8,8 @@ class  AuditoriaController < ApplicationController
         @auditorium = Auditorium.new
     end 
 
+#upon creation managers dictate how many seats an auditorium has
     def create
-        @movie = Movie.find_by(title: auditorium_params[:movie_title])
         @auditorium = Auditorium.create!(seat_count: auditorium_params[:seat_count])
         redirect_to @auditorium
     end 
@@ -18,6 +18,8 @@ class  AuditoriaController < ApplicationController
         @auditorium = Auditorium.find(params[:id])
     end 
 
+#in order to update the auditorium, manager needs to make sure that there are seats
+#because available tickets is dependent on seat count, on update, the auditorium destroys current tickets and resets them to accomodate the new seat count 
     def update
 
         @auditorium = Auditorium.find(params[:id])

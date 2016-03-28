@@ -2,6 +2,7 @@ class ManagerController < ApplicationController
     def index
     end 
 
+#dictates what the manager will be handling
     def show
         if params[:admin_selection] == "auditoriums" 
             @auditoriums = Auditorium.all

@@ -9,6 +9,7 @@ class Movie < ActiveRecord::Base
     after_create :load_showtimes, :load_tickets
 
 
+#calculates total of ticket sales
     def total_earned
         totals = []
 
@@ -19,6 +20,7 @@ class Movie < ActiveRecord::Base
         return totals.inject{ |sum, n| sum + n } 
     end
 
+#places a movie into an auditorium
     def set_movie(auditorium)
             @movie = Movie.find(self.id)
 
@@ -36,6 +38,7 @@ class Movie < ActiveRecord::Base
         self.save
     end 
 
+#loads ticekts into the showing for the movie
     def load_tickets
         if self.auditorium != nil 
             self.showings.each do |showing|
@@ -52,6 +55,7 @@ class Movie < ActiveRecord::Base
 
     private
 
+#automatic load of showtimes based off of runtime
         def load_showtimes
             available_times = {
              10.45 => "10:45am", 11.00 => "11:00am", 11.15 => "11:15am", 11.30 => "11:30am",11.45 => "11:45am", 12.00 => "12:00pm", 12.15 => "12:15pm", 12.30 => "12:30pm", 12.45 => "12:45pm", 

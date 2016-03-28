@@ -6,6 +6,8 @@ class Auditorium < ActiveRecord::Base
 
 
    
+   #handling associated objects
+   
     def remove_movie
         self.movie.update_attributes!(status: "not playing")
         self.movie.auditorium = nil

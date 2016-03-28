@@ -1,3 +1,4 @@
+#in case of authentication
 module SessionsHelper
 
         def login(manager)

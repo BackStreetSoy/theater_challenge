@@ -1,3 +1,6 @@
+// updates the price of the purchase
+// creates a button to purchase tickets ONLY if a value appears, this prevents the purchase of 0 tickets
+
 $(document).ready(function(){
 
 
@@ -6,7 +9,7 @@ $(document).ready(function(){
         price = 7.30 * value
         showing_id = $(".purchase_link").attr("href")
 
-        console.log(price)
+
 
         $(".price").html("<b>price: </b> $" + price + "0")
 

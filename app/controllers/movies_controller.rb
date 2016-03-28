@@ -7,6 +7,7 @@ class MoviesController < ApplicationController
         @movie = Movie.new
     end 
 
+#creates a movie based off params and automatically loads an image(not realistic)
     def create
          @movie = Movie.create(movie_params)
          @movie.image = Faker::Avatar.image
@@ -20,6 +21,8 @@ class MoviesController < ApplicationController
             render 'new'
         end 
     end 
+
+#only show available showings if the time hasn't passed them yet
 
     def show
         @showings = []
@@ -46,6 +49,7 @@ class MoviesController < ApplicationController
         @auditoriums = Auditorium.all
     end 
 
+#right now, only movies currently in an auditorium can be edited (in retrospect it should be the opposite)
     def update
         @movie = Movie.find(params[:id])
       
@@ -65,6 +69,8 @@ class MoviesController < ApplicationController
 
        
     end 
+
+    #make sure to remove the association between movie and it's auditorium before it is destroyed
 
     def destroy
         @movie = Movie.find(params[:id])

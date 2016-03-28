@@ -5,7 +5,7 @@ class Customer < ActiveRecord::Base
     validates :email, :credit_card_number, uniqueness: true 
 
 
-
+#different checks for different card types
     def self.valid_visa?(card_number)
         if /\A4[0-9]{12}(?:[0-9]{3})?\z/ === card_number
             return true 
